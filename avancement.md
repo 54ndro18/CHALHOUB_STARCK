@@ -1,6 +1,6 @@
 Veuillez renseigner votre avancement à chaque étape achevée et testée et par défaut à la fin de chaque séance de TP 
 
-NOMs & prénoms du groupe étudiants :  "A RENSEIGNER SVP "
+NOMs & prénoms du groupe étudiants :  Sandro CHALHOUB, Paul STARCK
 
 # Avancement sur la Partie TP AIPS - Mise en oeuvre de l'application tsock 
 
@@ -37,7 +37,7 @@ La version 2 intègre l’utilisation de TCP pour l’échange des messages. Veu
 
 [x] la réception et l'affichage des messages reçus  (en utilisant nc ou la version "enseignant" de tsock comme source)  sont corrects 
 
-[ ] l'échange de messages entre vos versions source et puit de la version 1 de "tsock" est opérationnel
+[x] l'échange de messages entre vos versions source et puit de la version 1 de "tsock" est opérationnel
 
 ## Avancement version 3 de tsock
 
@@ -45,11 +45,11 @@ La version v3 de tsock intègre les fonctions de formatage et d'affichage des me
 
 [ ] Le formattage et affichage des messages selon le cahier des charges sont opérationnels
 
-[ ] la prise en compte de l'option -n en émission aussi bien avec UDP et TCP est correcte
+[x] la prise en compte de l'option -n en émission aussi bien avec UDP et TCP est correcte
 
 [ ] la prise en compte de l'option -n en réception avec UDP est correcte
 
 [ ] la prise en compte de l'option -n en réception avec TCP est correcte
 
-[ ] la prise en compte de l'option -l est correcte
+[x] la prise en compte de l'option -l est correcte
 
