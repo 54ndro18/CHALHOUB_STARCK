@@ -6,7 +6,7 @@ Nous nous sommes concertrés sur le fonctionnement de l'API socket et non sur la
 
 Pour générer des executables :
 
-gcc -o tsock tsock_v0.c
+gcc -o tsock tsock_v3.c
 En UDP, avec potentiellement ajout de -n[] et -l[] et avec host = srv-tp04
 Puit : ./tsock -p -u 9000
 Source : ./tsock -s -u srv-tp04 9000
