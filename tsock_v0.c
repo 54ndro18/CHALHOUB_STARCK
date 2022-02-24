@@ -83,8 +83,7 @@ void source_udp(int port, char *host, int nb_message, int lg_M)
 	}
 }
 
-void puit_udp(int port, int lg_M, int nb_message)
-{
+void puit_udp(int port, int lg_M, int nb_max) {
 	// Creation du socket local
 	int sock;
 	if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) == -1)
@@ -113,9 +112,12 @@ void puit_udp(int port, int lg_M, int nb_message)
 	struct sockaddr_in padr_em;
 	int plg_adr_em = sizeof(padr_em);
 
-	for (int i = 0 ; i < nb_message ; i++)
+	int compteur = 0;
+	// nb_max == -1 signifie que nb_buf_appli est infini
+	while ((nb_max == -1) || (compteur < nb_max))
 	{
 		int temp;
+		compteur++;
 		if ((temp = recvfrom(sock, pmesg, lg_M, 0, ((struct sockaddr *)&padr_em), &plg_adr_em)) == -1)
 		{
 			printf("Echec de réception\n");
@@ -259,6 +261,7 @@ int main(int argc, char **argv)
 	extern char *optarg;
 	extern int optind;
 	int nb_message = 10; /* Nb de messages à envoyer ou à recevoir, par défaut : 10 en émission, infini en réception */
+	int nb_mess_modif = 0; // Permet de savoir si nb_message a été modifié
 	int source = -1;	 /* 0=puits, 1=source */
 	int protocol = 1;	 // 0 = UDP, 1 = TCP (par défaut)
 	int port = (atoi(argv[argc - 1]));
@@ -289,6 +292,7 @@ int main(int argc, char **argv)
 
 		case 'n':
 			nb_message = atoi(optarg);
+			nb_mess_modif = 1;
 			break;
 
 		case 'u':
@@ -334,11 +338,14 @@ int main(int argc, char **argv)
 		switch (protocol)
 		{
 		case 0:
+			if (!nb_mess_modif) {
+				nb_message = -1; // Le nombre de messages en réception n'a pas été modifié donc il est infini par défaut (désigné par -1)
+			}
 			puit_udp(port, lg_M, nb_message);
 			break;
 
 		case 1:
-			puit_tcp(port, lg_M, nb_message, 10);
+			puit_tcp(port, lg_M, nb_message);
 			break;
 
 		default:
