@@ -9,7 +9,7 @@ En UDP, avec potentiellement ajout de -n[] et -l[] et avec host = srv-tp04
 Puit : ./tsock -p -u 9000
 Source : ./tsock -s -u srv-tp04 9000
 
-En TCP, avec potentiellement ajout de -n[] et -l[] et avec host = srv-tp04
+En TCP, avec éventuellement ajout de -n[] et -l[] et avec host = srv-tp04
 Puit : ./tsock -p 9000
 Source : ./tsock -s srv-tp04 9000
 
