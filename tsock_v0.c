@@ -83,7 +83,7 @@ void source_udp(int port, char *host, int nb_message, int lg_M)
 	}
 }
 
-void puit_udp(int port, int lg_M)
+void puit_udp(int port, int lg_M, int nb_message)
 {
 	// Creation du socket local
 	int sock;
@@ -113,7 +113,7 @@ void puit_udp(int port, int lg_M)
 	struct sockaddr_in padr_em;
 	int plg_adr_em = sizeof(padr_em);
 
-	while (1)
+	for (int i = 0 ; i < nb_message ; i++)
 	{
 		int temp;
 		if ((temp = recvfrom(sock, pmesg, lg_M, 0, ((struct sockaddr *)&padr_em), &plg_adr_em)) == -1)
@@ -334,11 +334,11 @@ int main(int argc, char **argv)
 		switch (protocol)
 		{
 		case 0:
-			puit_udp(port, lg_M);
+			puit_udp(port, lg_M, nb_message);
 			break;
 
 		case 1:
-			puit_tcp(port, lg_M, 10);
+			puit_tcp(port, lg_M, nb_message, 10);
 			break;
 
 		default:
