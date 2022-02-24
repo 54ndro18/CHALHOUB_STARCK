@@ -2,6 +2,8 @@ Sandro CHALHOUB
 Paul STARCK
 3MIC - E
 
+Nous nous sommes concertrés sur le fonctionnement de l'API socket et non sur la reproduciton de l'affichage de l'implémentation de tsock sur les machines de l'INSA. C'est pourquoi notre programme diffère légèrement dans l'affichage mais pas dans l'utilisation.
+
 Pour générer des executables :
 
 gcc -o tsock tsock_v0.c
